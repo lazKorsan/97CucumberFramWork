@@ -36,11 +36,11 @@ public class DF038_AddAnewPetsAdsensStepdefinitions {
 
         // title ekler
         adminPages.petsAdsensTitleBox.sendKeys(title);
-
+        System.out.println(title);
         // gorunen ismi ekler
         String displayName = "aaa"+title;
         adminPages.petsAdsensDisplayNameBox.sendKeys("yavluKediler");
-
+        System.out.println(displayName);
         // radioButtona tıklar
         adminPages.petsAdsensRadioButton.click();
 

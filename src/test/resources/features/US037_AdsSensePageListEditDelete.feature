@@ -7,4 +7,5 @@
       When adminotorumuacar
       And yonetimpanelinegider
       And goesToPetsAdsensPage
-      Then addAnewPetsAdsens
+      Then editInfoAdsenseAndDeleteSense
+      Then sayfadancikisyapar

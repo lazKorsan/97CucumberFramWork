@@ -91,6 +91,12 @@ public class AdminPages {
     @FindBy(xpath = "//input[@class='select2-search__field']")
     public WebElement petAdsenseTypeBox ;
 
+    @FindBy(xpath = "//td[@class='v-align-middle semi-bold text-right']")
+    public WebElement petsAdsSenseEditbutton;
+
+    @FindBy(xpath = "//button[@class='btn btn-danger btn-cons btn-animated from-top fa fa-remove']")
+    public WebElement petsAdsenseDeleteButton ;
+
 
 
 
