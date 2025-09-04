@@ -45,48 +45,58 @@ public class DF002_BedManagersTestiStepdefinitations {
 
         // admin yatak listelerinin olduğu sayfadadır
         adminPages.addBedManagersButton.click();
-        ReusableMethods.bekle(2);
+        ReusableMethods.bekle(4);
 
-        // admin yatak düzenleme sayfasındadır
-        adminPages.addBedManagersButton.click();
+
 
         // yatak düzenlemeye başlar
 
-        // title a gerekli değerleri girr
-        adminPages.bedManagersTitleBox.sendKeys("MERKABA");
+        // title girer
+        adminPages.bedManagersTitleBox.sendKeys("PURRY Haven");
 
-        // content içeriğine gerekli değerleri girer
-        adminPages.petsContentBox.sendKeys("merhabalar kedi dostları");
+        // Admin oluşturmak istediği yatağın içeriğini girer
+        adminPages.bedManagersContentBox.sendKeys("Safe Snug Cat Sanctuary");
 
-        // sağ tarafdaki menüye geçe
 
-        // departments tuşuna basar ve dropDown menüyü açar
+
+        // admin sağ menüden departments menüsünü açar
         adminPages.selectDepartmentsButton.click();
 
-        // dropDown menüye department seçimi gönderir
-        adminPages.inputDepartmentsBox.sendKeys("Dental Care"+ Keys.ENTER);
+        // admin açılır menüden departments ataması yapar
+        adminPages.inputDepartmentsBox.sendKeys("Dental Care" +Keys.ENTER);
 
-        // ilac secimini yapar
+        // admin ilaçlar menüsünü açar
         adminPages.selectMedicinesButton.click();
         adminPages.inputMedicinesBox.sendKeys("Revolution (Selamectin)"+Keys.ENTER);
 
-        // ücret bilgisi girer
-        adminPages.inputPriceBox.sendKeys("657");
+        // admin pricebox a geçerli tutarı girer
+        adminPages.inputPriceBox.sendKeys("657"+Keys.ENTER);
 
-        // fotğrafın görünür olmasına izin verir radyo butondan
+        // admin yatağı kullanıma açar
         adminPages.radioButton.click();
 
-        // yatak yayınlanmak ıcın save edilir
+        // admin yatağı son kullanıcının hizmetine sunar
+        adminPages.bedManagersSaveButton.click();
 
-        adminPages.saveButton.click();
+        // admin hizmet tutarını fazla girdiğini fark eder ve edit sayfasına gider
+        adminPages.bedManagersEditButton.click();
 
+        adminPages.bedManagersContentBox.sendKeys("kitty cat"+Keys.ENTER);
 
+        // Kullanıcı yatak değişikliğini kayt eder
+        adminPages.bedManagersSaveButton.click();
 
+        // TEKLİ SİLME İŞLEMİ YAPILIR
+        adminPages.bedManagersDeleteButton.click();
 
+        // admin page profil butona basılır
+        adminPages.profileButton.click();
 
+        // adminpage profilmenusunden logout butona basılır
+        adminPages.logOutButton.click();
 
-
-
+        // anasayfa signout butona basılır
+        adminPages.signOutButton.click();
 
     }
 }

@@ -13,7 +13,90 @@ public class AdminPages {
 
     // < -- =========== ADMİN DASHBOARD PAGES ================= -- >
 
-    // < -- === ADMİN SAYFASINA ULAŞMAK İÇİN GEREKLİ LOCATERS
+    @FindBy(xpath = "(//div[@class='card social-card share col2 m-t-30 m-b-30 m-r-30'])[7]")
+    public WebElement bigConteiner ;
+
+    @FindBy(xpath = "(//div[@class='card-header clearfix'])[7]")
+    public WebElement topContainer ;
+
+    @FindBy(xpath = "(//div[@class='card-description '])[7]")
+    public WebElement bottomContainer ;
+
+    @FindBy(xpath = "//div[@class='card-header clearfix']")
+    public WebElement listeElementi ;
+
+
+
+
+
+    @FindBy(xpath = "//div[@class='error-container text-center']")
+    public WebElement errorMassage ;
+
+    @FindBy(xpath = "/html/body/div/div/h1")
+    public WebElement error404;
+
+    @FindBy(xpath = "//input[@placeholder='ex: Pets Title']")
+    public WebElement petsTitleBoxVaccinations ;
+
+    @FindBy(xpath = "//input[@placeholder='ex:Content Pets']")
+    public WebElement petsContentBoxVaccinations ;
+
+    @FindBy(xpath = "//input[@id='price']")
+    public WebElement petsPriceVaccinations ;
+
+    @FindBy(xpath = "//div[@class='dz-default dz-message']")
+    public WebElement uploadPngVaccinations ;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement saveVaccinationsButton ;
+
+    // < -- petsAdsense sayfası LOCATER ları -- >
+
+    @FindBy(xpath = "btn btn-tag btn-success btn-tag-rounded")
+    public WebElement petAddsensButton ; // sayfanın ustundeki buton
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement petsAdsenselocationBox ;
+
+    @FindBy(xpath = "//input[@placeholder='ex: This Title Pets']")
+    public WebElement petsAdsensTitleBox;
+
+    @FindBy(xpath = "//input[@placeholder='ex:  Your Display Name']")
+    public WebElement petsAdsensDisplayNameBox ;
+
+    @FindBy(xpath = "//*[@class='switchery switchery-default']")
+    public WebElement petsAdsensRadioButton ;
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement petsAdsensTypeBox ;
+
+    @FindBy(xpath = "(//button[@class='btn btn-primary btn-sm  btn-rounded m-r-10'])[1]")
+    public WebElement petAdsenseAddPageImageButton ;
+
+    @FindBy(xpath = "//input[@placeholder='ex:  Your Url Image']")
+    public WebElement petsAdsensUrlBox;
+
+    @FindBy(xpath = "(//button[@class='btn btn-primary btn-sm  btn-rounded m-r-10'])[2]")
+    public WebElement petsAdsensContesxtButton ;
+
+    @FindBy(xpath = "//div[@class='note-editable']")
+    public WebElement petsAdsensContextBox;
+
+    @FindBy(xpath = "//a[@class='btn btn-tag btn-success btn-tag-rounded']")
+    public WebElement petsAdsensAddAdsensPage;
+
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement petsAdsensSaveButton ;
+
+    @FindBy(xpath = "//input[@class='select2-search__field']")
+    public WebElement petAdsenseTypeBox ;
+
+
+
+
+
+
+
 
     @FindBy(xpath = "//input[@type='text']") //17
     public WebElement searchBox ;

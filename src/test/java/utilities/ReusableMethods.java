@@ -1,13 +1,14 @@
 package utilities;
 
 import org.apache.commons.io.FileUtils;
-import org.openqa.selenium.OutputType;
-import org.openqa.selenium.TakesScreenshot;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.File;
 import java.io.IOException;
+import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -310,5 +311,36 @@ public class ReusableMethods {
         FileUtils.copyFile(geciciDosya, asilResimDosyasi);
         return dosyaYolu;
     }
+
+    // 1. Temel Scroll Metodu
+    public static void scrollToElement(WebElement element) {
+        Actions actions = new Actions(Driver.getDriver());
+        actions.moveToElement(element).perform();
+        //<===============cagrılması ===========================>
+        //ReusableMethods.scrollToElement(practiceexpandtestingPage.oneTimePasswordButtons);
+        //<=====================================================>
+
+    }
+
+    // 2. Scroll + Beklemeli Versiyon
+    public static void scrollToElementWithWait(WebElement element, int timeout) {
+        WebDriverWait wait = new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout));
+        wait.until(ExpectedConditions.visibilityOf(element));
+        scrollToElement(element);
+        //<-- scrollToElementWithWait Methodunun Cagırılması -->
+        //ReusableMethods.scrollToElementWithWait(practiceexpandtestingPage.oneTimePasswordButtons,300);
+        // <-- =================================== -->
+    }
+
+    // 3. Sayfa Sonuna Scroll
+    public static void scrollToBottom() {
+        JavascriptExecutor js = (JavascriptExecutor) Driver.getDriver();
+        js.executeScript("window.scrollTo(0, document.body.scrollHeight)");
+
+        // <-- scrollBottom methodunun Cagırılması -->
+        //ReusableMethods.scrollToBottom();
+        // <-- =================================== -->
+    }
+
 
 }
