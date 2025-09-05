@@ -343,4 +343,68 @@ public class ReusableMethods {
     }
 
 
+    // < - ===== elementlerin ve sayfanının görünür olması ile ilgili methodlar-- >
+    // < -- vvvvv====================methodlar başlangıcı vvvvvvvvvvv============ -->
+
+
+
+    // 1️⃣ WAIT FOR VISIBILITY
+    /**
+     * Elementin görünür olmasını bekler
+     * @param element : Beklenecek WebElement
+     * @param timeout : Maksimum bekleme süresi (saniye)
+     * @return WebElement : Bulunan element
+     * @throws TimeoutException : Element görünür olmazsa
+     */
+    public static WebElement waitForVisibility(WebElement element, int timeout) {
+        return new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.visibilityOf(element));
+    }
+
+    // 2️⃣ WAIT FOR CLICKABILITY
+    /**
+     * Elementin tıklanabilir olmasını bekler
+     * @param element : Beklenecek WebElement
+     * @param timeout : Maksimum bekleme süresi (saniye)
+     * @return WebElement : Tıklanabilir element
+     * @throws TimeoutException : Element tıklanabilir olmazsa
+     */
+    public static WebElement waitForClickability(WebElement element, int timeout) {
+        return new WebDriverWait(Driver.getDriver(), Duration.ofSeconds(timeout))
+                .until(ExpectedConditions.elementToBeClickable(element));
+    }
+
+    // 3️⃣ VERIFY ELEMENT DISPLAYED
+    /**
+     * Elementin görüntülendiğini doğrular
+     * @param element : Kontrol edilecek WebElement
+     * @param timeout : Maksimum bekleme süresi (saniye)
+     * @return boolean : Görüntülenme durumu
+     */
+    public static boolean verifyElementDisplayed(WebElement element, int timeout) {
+        try {
+            waitForVisibility(element, timeout);
+            return element.isDisplayed();
+        } catch (Exception e) {
+            return false;
+        }
+    }
+
+    // 🚀 OPSİYONEL: Varsayılan Timeout'lu Overload Metodlar
+    public static WebElement waitForVisibility(WebElement element) {
+        return waitForVisibility(element, 10); // Varsayılan 10 sn
+    }
+
+    public static WebElement waitForClickability(WebElement element) {
+        return waitForClickability(element, 10); // Varsayılan 10 sn
+    }
+
+    public static boolean verifyElementDisplayed(WebElement element) {
+        return verifyElementDisplayed(element, 10); // Varsayılan 10 sn
+    }
+
+
+    // < -- element görünürlüğü ilgili methodlar sonu ====== -->
+
+
 }

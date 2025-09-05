@@ -1,5 +1,6 @@
 package stepdefinitions;
 
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.interactions.Actions;
@@ -39,17 +40,22 @@ public class DF037_Search_Edit_DeleteStepdefinitions {
         // değişiklikleri kaydeder
         adminPages.petsAdsensSaveButton.click();
 
+        // dashboard menüyü açar
         Actions actions = new Actions(Driver.getDriver());
         actions.moveToElement(adminPages.dashboardTables).perform();
 
+        // petAdsense butona tıklar
         adminPages.petsAdsenseButton.click();
+
+        // açılır menüden PetAdsense butona tıklar
         adminPages.subPetAdsenseButton.click();
 
-        // Adsense sayfasına gider. daha sonra dashboar ile alakalı iyileştirme yapılabilir
-       // Driver.getDriver().get("https://qa.loyalfriendcare.com/en/Dashboard/AdSense");
+
 
         // reklamı silme tusuna basar
         adminPages.petsAdsenseDeleteButton.click();
+
+        // çıkış adımları başka biryerden geliyor .Çıkış yapılıyor
 
 
 
@@ -62,4 +68,6 @@ public class DF037_Search_Edit_DeleteStepdefinitions {
 
 
     }
+
+
 }

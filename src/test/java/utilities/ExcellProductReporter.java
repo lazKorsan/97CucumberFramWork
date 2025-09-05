@@ -2,6 +2,7 @@ package utilities;
 
 import org.apache.poi.ss.usermodel.*;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -206,5 +207,16 @@ public class ExcellProductReporter {
 
 
     // < -- ===== excellReportSonu ===== -- >
+
+    @Test
+    public void cagirmaOrnegi(){
+        ExcellProductReporter.generateCustomReport(
+                Driver.getDriver(),
+                "https://qa.loyalfriendcare.com/en/Dashboard/Clients",
+                "//td[@class='v-align-middle semi-bold']",
+                "DOCTORS"
+
+        );
+    }
 
 }

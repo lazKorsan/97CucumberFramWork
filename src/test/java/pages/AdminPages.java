@@ -97,12 +97,40 @@ public class AdminPages {
     @FindBy(xpath = "//button[@class='btn btn-danger btn-cons btn-animated from-top fa fa-remove']")
     public WebElement petsAdsenseDeleteButton ;
 
+    @FindBy(xpath = "(//td[@class='v-align-middle semi-bold'])[1]")
+    public WebElement excellListElement ;
 
 
+    // < -- MEDİCİNES PAGES LOCATERS -- >
 
+    @FindBy(xpath = "(//a[@class='btn btn-complete btn-cons btn-animated from-left fa fa-edit'])[1]")
+    public WebElement medicinePagesEditButtons ;
 
+    @FindBy(xpath = "//input[@placeholder='ex:Content']")
+    public WebElement medicinesPageContextBox ;
 
+    @FindBy(xpath = "//button[@type='submit']")
+    public WebElement medicinePagesSaveButtons ;
 
+    @FindBy(xpath = "//button[@class='btn btn-danger btn-cons btn-animated from-top fa  fa-remove']")
+    public WebElement medicinesPagesDeleteButton ;
+
+    @FindBy(xpath = "//a[@class='btn btn-tag btn-success btn-tag-rounded']")
+    public WebElement medicinePagesAddMedicineButton ;
+
+    @FindBy(xpath = "//input[@placeholder='ex: Medicines']")
+    public WebElement medicineTitleBox ;
+
+    @FindBy(xpath = "//input[@placeholder='ex:Content Medicines']")
+    public WebElement medicinesContentText;
+
+    @FindBy(xpath = "//*[@id=\"dropzone\"]/div")
+    public WebElement medicinesPagesUpLoadImageElement ;
+
+    @FindBy(xpath = "//button[@class='btn btn-success btn-cons btn-animated from-left fa fa-save pull-right']")
+    public WebElement medicinePagesSaveButton ;
+
+    // < -- ^^^^ Medicines pages locaters yukarıda -- >
 
     @FindBy(xpath = "//input[@type='text']") //17
     public WebElement searchBox ;
@@ -185,6 +213,7 @@ public class AdminPages {
 
     @FindBy(xpath = "//*[@href='https://qa.loyalfriendcare.com/Dashboard/Users']")
     public WebElement subUsersButton; //2
+
     @FindBy(xpath = "//a[@href='https://qa.loyalfriendcare.com/Dashboard/Users/create']")
     public WebElement createUsersButton; //3
 
@@ -209,6 +238,27 @@ public class AdminPages {
 
     @FindBy(xpath = "//a[@href='https://qa.loyalfriendcare.com/Dashboard/Clients/create']")
     public WebElement createDoctorsButton; //9
+    // < -- === yeni doktor oluşturma ==== -- >
+
+   @FindBy(xpath = "//input[@id='body_en']")   // ÇİFT TIRNAKLI ÖRNEK
+   public WebElement createDoctorsPageContentBox ;
+
+   @FindBy(xpath = "//*[@id=\"Title_en\"]")
+   public WebElement creatDoctorsPageTitleBox ;
+
+   @FindBy(xpath = "/html/body/div[1]/div[2]/div[1]/div[2]/div/div[1]/div/div[2]/form/button")
+   public WebElement createDoctorsPageSaveButton;
+
+   @FindBy(xpath = "(//a[@class='btn btn-complete btn-cons btn-animated from-left fa fa-edit'])[1]")
+   public WebElement doctorsPageEditInfoButton ;
+
+   @FindBy(xpath = "(//button[@class='btn btn-danger btn-cons btn-animated from-top fa  fa-remove'])[1]")
+   public WebElement doctorsPagesDeleteButton ;
+
+
+
+
+
 
     // < -- === PATH ADSENS BUTTONS
 
@@ -231,8 +281,6 @@ public class AdminPages {
 
     @FindBy(xpath = "//a[@href='https://qa.loyalfriendcare.com/Dashboard/Instagrams/create']")
     public WebElement createMedicinesButtons; //15
-
-
 
     // < -- === TİCKET BUTTONS
 
@@ -261,9 +309,6 @@ public class AdminPages {
 
     @FindBy(xpath = "(//button[@class='btn btn-danger btn-cons btn-animated from-top fa  fa-remove'])[1]")
     public WebElement deleteVaccinationsButton ;
-
-
-
 
     // < -- ==============^^^================================ -- >
     // < -- === KOD BLOĞUNDA ÇOK FAZLA PAGES EKLEMEMEK İÇİM === -- >
@@ -439,32 +484,12 @@ public class AdminPages {
     public WebElement aboutUsButton ;
 
 
-
-
-
-    // giriş yapıldıktan sonra kullanılacak locaters
-
-
-
-
-    // < -- ===adminPage  Header profileButton
-
-
-    // < -- === adminPage Header profil dropDownMenü
-
-
-    // <-- register sayfası loceters
-
-
-
     // < -- loginPage Locaters
     // SıgnInButtons
     @FindBy(xpath = "/html/body/div/div[2]/div/form/button") //14
     public WebElement loginPageSigInButton ;
 
-    // mailBoxButton    register sayfası ile aynı
 
-    // passwordBoxButton  register sayfası ile aynı
 
 
     // < -- =====forgot/reset  page Locaters========== -- >
@@ -549,32 +574,32 @@ public class AdminPages {
     // <-- =============Body popularDoctors Buttons =========== -->
 
     @FindBy(xpath = "//*[@alt='Dr. Alejandro Martinez']") //34
-    public WebElement DrAlejandroMartinezButton;
+    public WebElement DrAlejandroMartinezButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[@alt='Dr. Marcus Rodriguez']") //35
-    public WebElement DrMarcusRodriguezButton;
+    public WebElement DrMarcusRodriguezButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[@alt='Dr. Olivia Bennett']") //36
-    public WebElement DrOliviaBennettButton;
+    public WebElement DrOliviaBennettButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[@alt='Dr. Emily Chang']") //37
-    public WebElement DrEmilyChangButton;
+    public WebElement DrEmilyChangButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[@alt='Dr. Nathan Patel']") //38
-    public WebElement DrNathanPatelButton;
+    public WebElement DrNathanPatelButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[@alt='Dr. Isabella Wong']") //39
-    public WebElement DrIsabellaWongButton;
+    public WebElement DrIsabellaWongButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//*[contains(@alt,'Liam')]") //40
-    public WebElement DrLiamOConnerButton;
+    public WebElement DrLiamOConnerButton; // doktorlar sayfasında kucuk harf
 
 
     @FindBy(xpath = "//*[@alt='Dr. Sophia Kim']") //41
-    public WebElement DrSophiaKimButton;
+    public WebElement DrSophiaKimButton; // doktorlar sayfasında kucuk harf
 
     @FindBy(xpath = "//img[@alt='Mr ALi']") //42
-    public WebElement MrAliButton;
+    public WebElement MrAliButton; // doktorlar sayfasında kucuk harf
 
     // <-- =========== Body VacionationsofPetsButtons locates======== -->
 
