@@ -9,94 +9,99 @@ import org.junit.platform.suite.api.Suite;
 @Suite
 @IncludeEngines("cucumber")
 @SelectClasspathResource("src/test/java")
-
 @ConfigurationParameter(key = Constants.FEATURES_PROPERTY_NAME,value = "src/test/resources/features")
+
+// < -- CLASS İCİNDEKİ ACİKLAMALAR ONEMLIDIRMISTIRISTIR  ( public class Runner)     -- >
+
+
+// BUNUN OMİTTED LERİ UZEİRNDE CALİSMA YAP
+// TEST YAPINI IGNORE YEMEYECEK SEKİLDE  YAPILANDIR
+
+// < -- eger features altına sadece calistiirlacak clasor secmek istersen feature altına
+// directory olarak bir wip clasoru aç DOSYA YOLUNU ASAGIDAKI GİBİ DEGİSTİR SADECE BUNA HAZ OLMA UZERE
+//@ConfigurationParameter(key = Constants.FEATURES_PROPERTY_NAME,value = "src/test/resources/features/wip")
+// o zaman testlerde some olsa bile sadece @wip  tagindaki testleri calistitirir
+
+
 @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME,value = "stepdefinitions")
 
-@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@wip")
+// < -- asagidaki satirlar hangi test türünü calistirmak istediğini belirler -- >
 
+// < -- @smoke testi calistirir
+//@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@smoke")
+
+// < -- @E2E testi calistirir
+@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@E2E")
+
+// < -- ornekler cogaltilabilir calismasini istemedigin testi yorum icine al
+
+// < -- grubun en önemli parcasi @wip sadece o testleri calistitirir
+//@ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@wip")
+
+// < -- ====^^^^^^^^^^^^  ornekler cagaltilabilir ^^^^^^^^^^^^^^^^^^^=== -- >
+
+// < -- ==================================vvvvvvvvvvvv============================================== -- >
+// < -- vvvvv   false yerine false yapılırsa runner her calistiginda sadece
+// < -- EKSIK ADIMLARI VERİR -- >
 @ConfigurationParameter(key = Constants.EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false")
+//@ConfigurationParameter(key = Constants.EXECUTION_DRY_RUN_PROPERTY_NAME,value = "true")
+// < -- ============ ^^^^^sadece eksik adimlari almak icin TRUE yapmak gerekir ^^^^^^ ========== -- >
 
-//@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, html:target/cucumber-report/paralel2.html")
+// < -- ==================================^^^^^^^^^^^^============================================== -- >
+
+//@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, html:target/cucumber-report/HtmlReport.html")
 @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, json:target/json-reports/cucumberRapor.json")
 //@ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, junit:target/xml-report/cucumber.xml")
 
+// Gelismis rapor alinabilmesi icin, Runner class'inin Terminal'den calistirilmasi gerekir
+
 public class Runner {
-        /*
-            Runner class'i bos bi class'dir
-            class body'sinde hicbir kod yoktur
+    /*
+    Runner class'i bos bir class'dir, yani body'sinde kod yoktur.
+    Runner class'inda isleri kullandigimiz notasyonlar yapar
 
-            Runner class'i tum islevlerini
-            Notasyonlar sayesinde gerceklestirir
+    @IncludeEngines("cucumber") : bu class'in cucumber ile calisacagini belirtir
+    @SelectClasspathResource("src/test/java") : Java kodlarini bulacagimiz dosya yolu
+    @ConfigurationParameter(key = Constants.FEATURES_PROPERTY_NAME,value = "src/test/resources/features/wip"):
+                            feature dosyalarini nerede bulacagini gosteren dosya yolu
+    @ConfigurationParameter(key = Constants.GLUE_PROPERTY_NAME,value = "stepdefinitions") :
+                            feature dosyalarini java ile birlestirecek kodlarin oldugu dosya yolu
+    @ConfigurationParameter(key = Constants.FILTER_TAGS_PROPERTY_NAME,value = "@wip")
+                            features klasoru altinda calismasini istedigimiz feature dosyalarini
+                            secebilecegimiz TAG
+                            Runner class'i calistirildiginda features klasoru altindaki
+                            tum scnerio ve feature'lari gozden gecirip,
+                            yazdigimiz TAG'a sahip olan scenario/feature'lari calistirir
 
-            @IncludeEngines("cucumber") : Bu class'in cucumber kullanarak calismasini saglar
+                            Bu sekilde TAG ile calistirdigimizda
+                            calismasini istedigimiz feature/scenario'lari calistirmanin yaninda
+                            calistirilmayacak feature/scenario'lari da yazip onlari skipped olarak isaretler
 
-            @SelectClasspathResource("src/test/java") : java dosyalarinin bulundugu ana dosyayin
-                                                        yerini belirler,
-                                                        Calistiginiz projede java tabanli class'lar
-                                                        farkli bir klasor altinda toplaniyorsa
-                                                        o klasorun dosya yolu girilmelidir
+                            EGER sadece istedigimiz Feature calissin isterseniz
+                            features klasoru altinda yeni bir alt klasor olusturabiliriz
+                            belirlenmis bir feature uzerinde calisirken, feature'i wip klasorune tasiyip calistirabiliriz
+                            ONEMLI NOT : eger tum feature'lar ile ilgili bir calistirma yapacaksak
+                                         feature dosya yolunu duzeltmeliyiz
 
-            Constants.FEATURES_PROPERTY_NAME = "src/test/resources/features"
-                projemizde feature dosyalarin bulundugu klasoru belirtir
-                EGER calistirilacak feature dosyalari daha spesifik bir klasor altinda toplanmissa
-                o klasorun dosya yolu girilmelidir.
-                Dikkat edilecek konu : Runner class'i verilen dosya yolundaki klasor disinda bulunan
-                hicbir feature dosyasini calistirmaz
+   @ConfigurationParameter(key = Constants.EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false")
+                            calistirmak istediginiz butun scenario/feature'lari gozden gecirip
+                            scenario/feature'lari calistirmadan eksik stepdefinition varsa
+                            bize raporlamasi ve eksik adimlari olusturmasi icin value="true"
 
-           Constants.GLUE_PROPERTY_NAME,value = "stepdefinitions"
-                Bu tanimlama, secilen feature dosyalarini hangi klasordeki
-                Java kodlarini kullanarak calistiracagimizi belirler
-                Burada dikkat edecegimiz sey, spesifik bir class'in degil
-                tum stepdefinitios class'larinin bulundugu klasoru secmemizdir
+                            value="true" olarak yazildiginda, Runner calistirilirsa
+                            testleri calistirmadan kontrol ettigi icin
+                            eksik adim yoksa test passed olarak raporlar
 
-           Constants.FILTER_TAGS_PROPERTY_NAME,value = "@wip"
-               Yukarda calisacak feature dosyalari icin
-               features klasorunu sectik.
-               Runner'i her calistirdigimizda, tum feature'lari degil
-               belirledigimiz bir tag'a sahip olan feature'lari calistirmak icin kullanilir
+                            hata yapmamak icin eksik adimlari belirlemek adina value true yapilip
+                            eksik adimlar belirlendikten sonra hemen value false'a dondurulmelidir
 
-            Yapilan bu 3 ayar sayesinde
-            Cucumber FEATURES_PROPERTY_NAME olarak verilen klasordeki feature dosyalarindan
-            FILTER_TAGS_PROPERTY_NAME de verilen tag'a sahip olanlari
-            GLUE_PROPERTY_NAME de verilen dosya yolu altindaki java stepdefinitions kodlarini
-            kullanarak calistirir.
+ @ConfigurationParameter(key = Constants.PLUGIN_PROPERTY_NAME,value = "pretty, html:target/cucumber-report/HtmlReport.html")
+                            otomatik olarak HTML rapor olusturulmasini saglar
+                            dosya yolu html:target/cucumber-report/HtmlReport.html
+                            secildigi icin Runner her calistiginda HtmlReport isminde dosya olusturup
+                            onceki raporun uzerine kaydeder
+                            eger raporun kaybolmasi ve uzerine kayit yapilmasini istemezseniz
+                            yukardaki paraetrede dosya yolunu degistirebilirsiniz
 
-            EXECUTION_DRY_RUN_PROPERTY_NAME,value = "false"
-            EGER bu parametre'nin degeri true yapilirsa
-            Kodlari calistirmak yerine
-            SADECE eksik adim kontrolu yapar
-            eksik adim varsa, o step'lerin java method'larini olusturur
-            eksik adim yoksa, bunu vurgulamak icin, kodlari calistirmadan "test passed" der
-
-
-            PLUGIN_PROPERTY_NAME,value = "pretty, html:target/cucumber-report/HtmlReport.html
-            HTML raporlar ureten plugin'i calistirir
-            ANCCCAAAAK bu satir Runner class'inda oldugu icin
-            Runner ile calistirilan feature'lar icin html rapor olusturur
-            Feature veya Scenario yanindaki yesil tus ile calistirilirsa rapor olusturmaz
-
-            dosya yolu olarak target/cucumber-report/HtmlReport.html girildiginden
-            bir degisiklik yapmazsak her seferinde ayni dosyanin uzerine kaydeder
-            ozel olarak saklamak istedigimiz raporlar olursa
-            HtmlReport yerine istenen isim yazilabilir
-            Eger Farkli bir klasor altinda raporlari kaydetmek isterseniz
-            target/cucumber-report/  kismi degistirilebilir
-
-            Diger raporlar da PLUGIN_PROPERTY_NAME olarak tanimlandigindan
-            Html, json veya xml raporlarindan hangisini istiyorsak
-            o satir yorumdan cikarilmali,
-            diger rapor satirlari yorum yapilmalidir
-
-            Diger json ve xml raporlari
-            gorsel acidan bizim icin begenilmeyebilir
-            ANCAAKKK eger her hangi bir durumda
-            raporumuzdaki data'lar bizden istenirse
-            json veya xml olarak istenebilir
-            biz de bu raporlari olusturup
-            isteyen kislere yollayabiliriz
-
-
-
-         */
+ */
 }

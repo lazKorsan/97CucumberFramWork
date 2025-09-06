@@ -1,5 +1,5 @@
 
-
+@E2E
 Feature: US039 delete To Vaccinations And list
 
   Scenario: admin page üzerinde asi silebilmekliklik

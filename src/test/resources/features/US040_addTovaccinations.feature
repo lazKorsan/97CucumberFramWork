@@ -1,5 +1,5 @@
 
-
+@E2E
   Feature: US040 vaccinations Ekleme
     Scenario: admin page uzerinde asi ekleyebilmeklik
 

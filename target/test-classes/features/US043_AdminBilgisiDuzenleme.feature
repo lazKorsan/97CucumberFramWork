@@ -1,5 +1,5 @@
 
-
+@E2E @wip
 Feature: US043 Admin Sayfasinda Bilgi duzenleme
 
   Scenario: Admin Sayfasinda Bilgi Duzenleme

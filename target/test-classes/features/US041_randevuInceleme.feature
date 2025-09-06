@@ -1,5 +1,5 @@
 
-
+@E2E
   Feature: US041 randevuInceleSayfasi
 
     Scenario: adminRandevuSayfasiniInceler
