@@ -12,6 +12,8 @@ import utilities.Driver;
 public class DF007_YeniKullaniciOlusturmakStepdefinitions {
     AdminPages adminPages = new AdminPages();
     Faker faker = new Faker();
+
+
     private TestData testData;
 
     private static class TestData {

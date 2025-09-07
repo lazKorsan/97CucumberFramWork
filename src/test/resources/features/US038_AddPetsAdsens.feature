@@ -1,5 +1,5 @@
 
-@E2E
+@Regressions
   Feature: US039 add to Pet Adsense
 
     Scenario: madeANewPetsAdsens
