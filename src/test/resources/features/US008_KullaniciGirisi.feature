@@ -1,4 +1,4 @@
-
+@Negatif
 
   Feature: US008 Kullanici loyalfriendcare.com sitesine giris yapar
 

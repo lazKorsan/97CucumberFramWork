@@ -1,5 +1,5 @@
 
-@Negatif
+  @E2E
 Feature: Kullanici coklu negatif girisi test eder
 
   # BU BENİM ÇOKLU NEGATİF TESTTE İŞLEYEN 3NCÜ SENARYOM.

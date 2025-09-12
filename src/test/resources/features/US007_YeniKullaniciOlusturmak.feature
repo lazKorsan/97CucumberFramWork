@@ -3,6 +3,7 @@
 # BU TEST testNG deki dataProvider olayına karşılık geliyor.
   # Stepdefinitions iyi oluşturulursa  miss.
   #bu test için stepdefinitions oluşturmak çok önemli
+  @E2E
 Feature: US007 loyalfriendcare.com adresinde yeni kullanici olusturmak
 
   Scenario: TC_01 Ziyaretci yeni uyelik olusturur
